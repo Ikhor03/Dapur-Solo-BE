@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "set DEBUG=eduwork-server:* & node ./bin/www",
-    "nodemon" : "set DEBUG=eduwork-server:* & nodemon ./bin/www"
+    "start": "set DEBUG=eduwork-server:* & node app.js",
+    "nodemon" : "set DEBUG=eduwork-server:* & nodemon app.js"
   },
   "dependencies": {
     "@casl/ability": "^6.3.3",

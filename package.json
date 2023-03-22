@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "set DEBUG=eduwork-server:* & node ./bin/www",
     "nodemon" : "set DEBUG=eduwork-server:* & nodemon app.js"
   },
   "dependencies": {

@@ -78,25 +78,7 @@ const logout = async (req, res, next) => {
     })
 }
 
-const test = async (req, res, next) => {
-    try {
-        if (!req.user) {
-            res.json({
-                err: 1,
-                message: 'You are not login or token expierd'
-            })
-        }
-
-        // res.json(req.user)
-        let find = await User.find()
-        return res.json(find)
-    } catch (err) {
-        next(err)
-    }
-}
-
 module.exports = {
-    test,
     register,
     localStrategy,
     login,

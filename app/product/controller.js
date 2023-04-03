@@ -4,6 +4,7 @@ const config = require('../config')
 const Product = require('./model')
 const Category = require('../category/model')
 const Tag = require('../tag/model')
+const { dbHost, dbPort } = require('../config')
 
 const store = async (req, res, next) => {
     try {
@@ -42,7 +43,7 @@ const store = async (req, res, next) => {
 
             src.on('end', async () => {
                 try {
-                    let product = new Product({ ...payload, image_url: filename })
+                    let product = new Product({ ...payload, image_url: `${dbHost}:${dbPort}/${filename}` })
                     await product.save()
                     return res.json(product)
                 } catch (error) {
@@ -173,7 +174,8 @@ const update = async (req, res, next) => {
 
 const index = async (req, res, next) => {
     try {
-        let { skip = 0, limit = 10, q = '', category = '', tags = [] } = req.query
+        let { skip = 0, limit = 12, q = '', category = '', tags = [] } = req.query
+        console.log(skip, limit)
 
         let paramsFilter = {}
 
@@ -193,7 +195,7 @@ const index = async (req, res, next) => {
 
         if (tags.length > 0) {
 
-            tags = await Tag.find({ name: { $regex: tags, $options: 'i' } })
+            tags = await Tag.find({ name: { $in: tags } })
             if (tags) {
                 paramsFilter = { ...paramsFilter, tags: { $in: tags.map(tag => tag._id) } }
             }

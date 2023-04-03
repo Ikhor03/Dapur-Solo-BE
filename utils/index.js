@@ -11,7 +11,7 @@ function getToken(req) {
 
 const policies = {
     guest(user, { can }) {
-        can('read', 'Product')
+        can('read', 'Products')
     },
     user(user, { can }) {
         can('view', 'Order')
@@ -25,6 +25,11 @@ const policies = {
         can('update', 'DeliveryAddress', { user_id: user._id })
         can('delete', 'DeliveryAddress', { user_id: user._id })
         can('read', 'Invoice', { user_id: user._id })
+    },
+    admin(user, {can}) {
+        can('create', 'Products')
+        can('delete', 'Products')
+        can('update', 'Products')
     }
  
 }

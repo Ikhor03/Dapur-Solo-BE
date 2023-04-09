@@ -11,7 +11,7 @@ const orderItemSchema = Schema({
         type: Number,
         required: [true, 'Harga item harus diisi']
     },
-    qty: {
+    quantity: {
         type: Number,
         required: [true, 'Kuantitas harus diisi'],
         min: [1, 'Kuantitas tidak boleh kosong']

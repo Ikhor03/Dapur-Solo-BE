@@ -8,7 +8,7 @@ cartItemSchema  = Schema({
         required: [true, 'Nama item harus diisi']
 
     },
-    qty: {
+    quantity: {
         type: Number,
         required: [true, 'Quantity harus diisi'],
         min: [1, 'Quantity tidak boleh kosong']

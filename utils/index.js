@@ -17,7 +17,7 @@ const policies = {
         can('view', 'Order')
         can('create', 'Order')
         can('read', 'Order', { user_id: user._id })
-        can('update', 'User', { _id: user._id })
+        can('update', 'User', { user_id: user._id })
         can('read', 'Cart', { user_id: user._id })
         can('update', 'Cart', { user_id: user._id })
         can('view', 'DeliveryAddress')

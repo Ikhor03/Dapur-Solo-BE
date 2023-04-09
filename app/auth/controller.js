@@ -6,12 +6,13 @@ const config = require('../config')
 const { getToken } = require('../../utils')
 
 
-const register = (req, res, next) => {
+const register = async (req, res, next) => {
     try {
         let payload = req.body
         let user = new User(payload)
-        user.save()
-        return res.json(user)
+        await user.save()
+        // console.log(this);
+        return res.json(payload)
     } catch (err) {
         if (err && err.name === 'ValidationError') {
             return res.json({
@@ -41,6 +42,7 @@ const localStrategy = async (email, password, done) => {
 const login = (req, res, next) => {
     passport.authenticate('local', async function (err, user) {
         if (err) return next(err)
+        // console.log(user);
         if (!user) return res.json({ error: 1, response: 'Email atau password salah' })
 
         let signed = jwt.sign(user, config.secretkey)

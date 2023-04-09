@@ -12,7 +12,7 @@ router.post('/logout', controller.logout)
 
 router.get('/users', async (req, res) => {
     let users = await User.find()
-    res.json(users)
+    res.send(users)
 })
 
 module.exports = router

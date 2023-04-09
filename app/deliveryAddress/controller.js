@@ -3,6 +3,7 @@ const deliveryAddresses = require('./model')
 const store = async (req, res, next) => {
     try {
         let payload = req.body
+        console.log(payload);
         let user = req.user
         let address = new deliveryAddresses({ ...payload, user: user._id })
         await address.save()

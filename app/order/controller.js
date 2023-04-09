@@ -7,8 +7,10 @@ const DeliveryAddress = require('../deliveryAddress/model')
 const store = async (req, res, next) => {
     try {
         let { delivery_fee, delivery_address } = req.body
-        let items = await CartItem.find({ user: req.user.Id }).populate('Products')
-        if (!items) {
+        let items = await CartItem.find({ user: req.user._id }).populate('product')
+        // console.log(items)
+        // console.log(req.user)  
+        if (items.length === 0) {
             return res.json({
                 error: 1,
                 message: 'You are not create orders because you have not items in cart'
@@ -27,13 +29,14 @@ const store = async (req, res, next) => {
                 kelurahan: address.kelurahan,
                 detail: address.detail
             },
-            user: req.user._id
+            user: req.user._id,
+            // order_items: 
         })
 
         let orderItems = await OrderItem.insertMany(items.map(item => ({
             ...item,
             name: item.product.name,
-            qty: parseInt(item.qty),
+            quantity: parseInt(item.quantity),
             price: parseInt(item.price),
             order: order._id,
             product: item.product._id
@@ -42,6 +45,8 @@ const store = async (req, res, next) => {
         orderItems.forEach(item => order.order_items.push(item))
         order.save()
         await CartItem.deleteMany({ user: req.user._id })
+
+        res.status(200).send({message: "Add order successfully", data: order})
 
     } catch (err) {
         if (err && err.name === 'ValidationError') {
@@ -60,10 +65,11 @@ const index = async (req, res, next) => {
         let { skip = 0, limit = 10 } = req.query
         let count = await Order.find({ user: req.user._id }).countDocuments()
         let orders = await Order.find({ user: req.user._id })
-            .skip(parseInt(limit))
+            .skip(parseInt(skip))
             .limit(parseInt(limit))
             .populate('order_items')
             .sort('-createdAt')
+
             return res.json({
                 data: orders.map(order => order.toJSON({virtuals: true})),
                 count

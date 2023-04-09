@@ -33,17 +33,17 @@ const userSchema = Schema({
 userSchema.path('email').validate(function (email) {
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     return regex.test(email)
-}, attr => `${attr.value} harus merupakan email yang valid`)
+}, attr => `${attr.value} bukan merupakan email yang valid`)
 
-//validasi email sudah ada atau belum
-userSchema.path('email').validate(async function (email) {
-    try {
-        const checkEmail = await this.model('Users').count({ email })
-        return !checkEmail
-    } catch (err) {
-        throw err
-    }
-}, attr => `${attr.value} sudah terdaftar`)
+//validasi email sudah ada atau belum terdaftar
+    userSchema.path('email').validate(async function (email) {
+        try {
+            const checkEmail = await this.model('Users').count({ email })
+            return !checkEmail
+        } catch (err) {
+            throw err
+        }
+    }, attr => `${attr.value} sudah terdaftar`)
 
 //bcrypt
 const HASH_ROUND = 10

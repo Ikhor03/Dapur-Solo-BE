@@ -1,36 +1,38 @@
 const product = require('../product/model')
-const cartItem = require('../cart_item/model')
+const CartItem = require('../cart_item/model')
 
 const update = async (req, res, next) => {
     try {
-        const { items } = req.body
-        const productsIds = items.map(item => product._id)
-        const products = product.find({ id: { $in: productsIds } })
+        const  {items}  = req.body
+        const productsIds = items.map(item => item._id)
+        const products = await product.find({ _id: { $in: productsIds } }).exec()
         let cartItems = items.map(item => {
-            let relatedProducts = products.find(product => product._id.toString() === item.product._id)
+            let relatedProducts = products.find(product => product._id.toString() === item._id)
             return {
-                product: relatedProducts.Id,
+                product: relatedProducts._id,
                 price: relatedProducts.price,
                 image_url: relatedProducts.image_url,
                 name: relatedProducts.name,
                 user: req.user._id,
-                qty: item.qty
+                quantity: item.quantity
             }
         })
         
-        await cartItem.deleteMany({user: req.user._id})
-        await cartItem.bulkWrite(cartItems.map(item => {
+        await CartItem.deleteMany({user: req.user._id})
+        await CartItem.bulkWrite(cartItems.map(item => {
             return {
                 updateOne: {
                     filter: {
                         user: req.user._id,
                         product: item.product
-                    }
-                },
-                update: item,
-                upsert: true
+                    },
+                    update: item,
+                    upsert: true
+                }
             }
         }))
+
+        res.status(200).send({message: 'Cart updated Successfully', data: cartItems})
 
     } catch (err) {
         if(err && err.name === 'ValidationError') {
@@ -46,7 +48,7 @@ const update = async (req, res, next) => {
 
 const index = async (req, res, next) => {
     try {
-        let items = await cartItem.find({user: req.user._id}).populate('Products')
+        let items = await CartItem.find({ user: req.user._id }).populate('product')
         res.json(items)
     } catch (err) {
         if(err && err.name === 'ValidationError') {

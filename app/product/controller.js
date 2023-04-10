@@ -175,7 +175,6 @@ const update = async (req, res, next) => {
 const index = async (req, res, next) => {
     try {
         let { skip = 0, limit = 12, q = '', category = '', tags = [] } = req.query
-        console.log(skip, limit)
 
         let paramsFilter = {}
 

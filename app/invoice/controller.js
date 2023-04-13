@@ -12,7 +12,7 @@ const show = async (req, res, next) => {
 
         let policy = policyFor(req.user)
         let SubjectInvoice = subject('Invoice', { ...invoice, user_id: invoice.user._id })
-        console.log(req.user)
+        // console.log(req.user)
         if (!policy.can('read', SubjectInvoice)) {
             return res.json({
                 error: 1,
@@ -30,6 +30,11 @@ const show = async (req, res, next) => {
     }
 }
 
+const update = () => {
+    
+}
+
 module.exports = {
-    show
+    show,
+    update
 }

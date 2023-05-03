@@ -1,6 +1,6 @@
 ## Dapur Solo clone
 
-Project ini dibuat kurang lebih sesuai dengan pembelajaran yang disampaikan pada bothcamp yang saya ikuti
+Project ini dibuat kurang lebih sesuai dengan pembelajaran yang disampaikan pada bootcamp yang saya ikuti
 
 # Available Script
 

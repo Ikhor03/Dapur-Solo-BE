@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Ikhor03/Dapur-Solo-BE.git">
-    <img src="public/favicon.png" alt="Logo" width="80" height="80">
+    <img src="public/images/static/favicon.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">Dapur Solo</h3>
@@ -58,6 +58,6 @@ You can fork this repo
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: public/ss.png
+[product-screenshot]: public/images/static/ss.png
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/

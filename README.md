@@ -12,8 +12,7 @@
     <br />
     <a href="https://youtu.be/V0d6w4pyTxk"><strong>Video Demo »</strong></a>
     <br />
-    <br />
-    <a href="https://dapur-solo.vercel.app/">Web Demo (need to run API in your local)</a>
+    <a href="https://dapur-solo.vercel.app/">Web Demo (need to run this API in local)</a>
   </p>
 </div>
 

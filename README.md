@@ -7,9 +7,6 @@
   <a href="https://github.com/Ikhor03/Dapur-Solo-BE.git">
     <img src="public/favicon.png" alt="Logo" width="80" height="80">
   </a>
-=======
-Project ini dibuat kurang lebih sesuai dengan pembelajaran yang disampaikan pada bootcamp yang saya ikuti
->>>>>>> b861e2a091e51f426878f70023da7bf9d7a3b579
 
 <h3 align="center">Dapur Solo</h3>
 

@@ -1,6 +1,4 @@
 <a name="readme-top"></a>
-
-<<<<<<< HEAD
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">

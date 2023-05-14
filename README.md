@@ -18,7 +18,7 @@
 
 <!-- ABOUT THE PROJECT -->
 
-[![Product Name Screen Shot][product-screenshot]](https://vercel.com/ikhor03/dapur-solo)
+[![Product Name Screen Shot][product-screenshot]](https://dapur-solo.vercel.app/)
 
 This project is a server side from [Dapur Solo project](https://github.com/Ikhor03/Dapur-Solo-FE.git). I worked on this project to fulfill the back-end task for the bothcamp program by [Eduwork](https://eduwork.id/) that I participated in. The application will run by default on port 3000 at ["localhost:3000"](http://127.0.0.1:3000).
 

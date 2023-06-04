@@ -1,10 +1,10 @@
 const mongoose = require('mongoose')
-const { dbHost, dbName, dbPass, dbPort, dbUser } = require('../app/config')
+const { mongoURI } = require('../app/config')
 
 
 const connectDB = async () => {
     try {
-      const conn = await mongoose.connect(`mongodb://${dbUser}:${dbPass}@${dbHost}:${dbPort}/${dbName}?authSource=admin`);
+      const conn = await mongoose.connect(mongoURI);
       console.log(`MongoDB Connected: ${conn.connection.host}`);
     } catch (error) {
       console.log(error);

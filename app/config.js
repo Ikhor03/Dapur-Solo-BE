@@ -5,6 +5,7 @@ dotenv.config()
 
 module.exports = {
     rootPath: path.resolve(__dirname, '..'),
+    mongoURI: process.env.MONGO_URI,
     secretkey: process.env.SECRET_KEY,
     serviceName: process.env.SERVICE_NAME,
     dbHost: process.env.DB_HOST,

@@ -14,13 +14,13 @@ const connectDB = require('../database')
  */
 
 var port = normalizePort(process.env.PORT || '3000');
-// app.set('port', port); // #cek configuration
+app.set('port', port); // #cek configuration
 
 /**
  * Create HTTP server.
  */
 
-// var server = http.createServer(app); // #cek configuration
+var server = http.createServer(app); // #cek configuration
 
 /**
  * Listen on provided port, on all network interfaces.

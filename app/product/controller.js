@@ -206,7 +206,7 @@ const index = async (req, res, next) => {
             .skip(parseInt(skip))
             .limit(parseInt(limit))
             .populate('category')
-            .populate('tags')
+            .populate('tags')     
         return res.json({
             data: product,
             count
@@ -251,5 +251,5 @@ module.exports = {
     index,
     update,
     view,
-    destroy
+    destroy,
 }

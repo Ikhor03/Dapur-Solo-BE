@@ -8,8 +8,6 @@ const store = async (req, res, next) => {
     try {
         let { delivery_fee, delivery_address } = req.body
         let items = await CartItem.find({ user: req.user._id }).populate('product')
-        // console.log(items)
-        // console.log(req.user)  
         if (items.length === 0) {
             return res.json({
                 error: 1,

@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const cors = require('cors')
 const productRoute = require('./app/product/router')
 const categoryRoute = require('./app/category/router')
 const tagRoute = require('./app/tag/router')
@@ -13,6 +12,7 @@ const deliveryAddressRouter = require('./app/deliveryAddress/router')
 const cartRoute = require('./app/cart/router')
 const orderRoute = require('./app/order/router')
 const invoiceRoute = require('./app/invoice/router')
+const cors = require('cors')
 
 var app = express();
 

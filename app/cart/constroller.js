@@ -31,7 +31,7 @@ const update = async (req, res, next) => {
                 }
             }
         }))
-        res.status(200).send({message: 'Cart updated Successfully', data: cartItems})
+        res.json({message: 'Cart updated Successfully', data: cartItems})
 
     } catch (err) {
         if(err && err.name === 'ValidationError') {

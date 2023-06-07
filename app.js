@@ -16,6 +16,7 @@ const cors = require('cors')
 
 var corsOptions = {
   origin: '*',
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 var app = express();
@@ -25,7 +26,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(cors())
+app.use(cors(corsOptions))
 
 app.use(logger('dev'))
 app.use(express.json())

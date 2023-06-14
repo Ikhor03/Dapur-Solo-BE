@@ -15,7 +15,7 @@ const invoiceRoute = require('./app/invoice/router')
 const cors = require('cors')
 
 var corsOptions = {
-  origin:'http://localhost:3001',
+  origin: ['http://localhost:3001', 'https://dapur-solo.vercel.app/'],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
